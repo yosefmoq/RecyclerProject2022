@@ -19,13 +19,15 @@ public class InsertEmployeeActivity extends AppCompatActivity {
         activityInsertEmployeeBinding = ActivityInsertEmployeeBinding.inflate(getLayoutInflater(),null,false);
         setContentView(activityInsertEmployeeBinding.getRoot());
 
-        employeeViewModel = new ViewModelProvider(this).get(EmployeeViewModel.class);
 
+        employeeViewModel = new ViewModelProvider(this).get(EmployeeViewModel.class);
         activityInsertEmployeeBinding.btnInsert.setOnClickListener(v->{
             String name = activityInsertEmployeeBinding.etEmpName.getText().toString();
             String email = activityInsertEmployeeBinding.etEmpEmail.getText().toString();
 
             Employee employee = new Employee(name,email,R.drawable.employee);
+            employee.setId(1);
+
             employeeViewModel.insertEmployee(employee);
 
             activityInsertEmployeeBinding.etEmpName.setText("");
